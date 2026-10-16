@@ -1,0 +1,506 @@
+/* ========== Variáveis ========== */
+:root {
+    --rosa-claro: #ffe3e8;
+    --rosa: #ffb6c1;
+    --fucsia: #d63384;
+    --vermelho: #e0245e;
+    --vermelho-escuro: #c51f4f;
+    --texto: #4a3a40;
+    --card: rgba(255, 255, 255, 0.88);
+    --raio: 18px;
+    --sombra: 0 10px 30px rgba(220, 53, 100, 0.18);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+/* ========== Base ========== */
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+    line-height: 1.7;
+    color: var(--texto);
+    background-color: var(--rosa-claro);
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ctext y='50' x='20' font-size='26' opacity='0.14'%3E❤️%3C/text%3E%3C/svg%3E"),
+        linear-gradient(160deg, #fff0f3 0%, #ffd6e0 50%, #ffc2d4 100%);
+    background-attachment: fixed;
+}
+
+.eagle-lake-regular,
+h1, h2, h3, h4 {
+    font-family: "Eagle Lake", Georgia, serif;
+    font-weight: 400;
+}
+
+/* ========== Container principal ========== */
+main {
+    width: min(100% - 2rem, 900px);
+    margin: clamp(1rem, 4vw, 3rem) auto;
+    padding: clamp(1rem, 4vw, 2.5rem);
+    background: var(--card);
+    border: 2px solid var(--rosa);
+    border-radius: 24px;
+    box-shadow: var(--sombra);
+    backdrop-filter: blur(6px);
+    animation: surgir 0.7s ease both;
+}
+
+section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+article {
+    background: #fff;
+    border-radius: var(--raio);
+    border-left: 5px solid var(--vermelho);
+    padding: clamp(1rem, 3vw, 1.75rem);
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 14px rgba(214, 51, 132, 0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(214, 51, 132, 0.18);
+}
+
+/* ========== Títulos ========== */
+h1, h2, h3 {
+    color: var(--fucsia);
+    text-align: center;
+    margin-top: 0;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 5vw + 0.5rem, 3rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--fucsia), var(--vermelho));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+h1::after {
+    content: "❤";
+    display: block;
+    font-size: 0.5em;
+    -webkit-text-fill-color: var(--vermelho);
+    margin-top: 0.3rem;
+}
+
+h2 {
+    font-size: clamp(1.4rem, 3vw + 0.5rem, 2rem);
+    margin: 2rem 0 1rem;
+}
+
+h3 { font-size: clamp(1.15rem, 2vw + 0.5rem, 1.5rem); }
+
+h4, .topicocolorido {
+    color: var(--vermelho);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* ========== Texto ========== */
+p, label { color: var(--texto); }
+
+p {
+    text-align: justify;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+/* Remove quebras forçadas em telas pequenas para o texto fluir */
+@media (max-width: 700px) {
+    p br { display: none; }
+    p { text-align: left; }
+}
+
+a {
+    color: var(--vermelho);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid var(--rosa);
+    transition: color 0.2s, border-color 0.2s;
+    overflow-wrap: anywhere;
+}
+
+a:hover { color: var(--fucsia); border-color: var(--fucsia); }
+
+/* ========== Listas ========== */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+ul li {
+    background: linear-gradient(135deg, #fff0f4, #ffe0e8);
+    border: 1px solid var(--rosa);
+    color: var(--fucsia);
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+
+ul li:hover {
+    transform: scale(1.06);
+    background: var(--vermelho);
+    color: #fff;
+}
+
+/* ul usado como data / rótulo */
+ul:not(:has(li)) {
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    color: var(--vermelho);
+}
+
+/* ========== Formulários ========== */
+form { margin: 0; }
+
+section > div {
+    margin: 1rem 0;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+input[type="radio"] + label,
+input[type="radio"] {
+    display: inline-block;
+}
+
+input[type="radio"] {
+    accent-color: var(--vermelho);
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 0.3rem;
+    vertical-align: middle;
+}
+
+input[type="radio"] + label {
+    margin: 0 1rem 0.5rem 0;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    font: inherit;
+    padding: 0.7rem 0.9rem;
+    color: var(--texto);
+    background: #fff;
+    border: 1.5px solid var(--rosa);
+    border-radius: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="color"] {
+    width: 4rem;
+    height: 2.6rem;
+    padding: 2px;
+    border: 1.5px solid var(--rosa);
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+}
+
+textarea { resize: vertical; min-height: 7rem; }
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--fucsia);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(214, 51, 132, 0.18);
+}
+
+::placeholder { color: #b58a96; opacity: 0.85; }
+
+/* ========== Botões ========== */
+button, .botao {
+    background: linear-gradient(135deg, var(--vermelho), var(--fucsia));
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+}
+
+button:hover, .botao:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(224, 36, 94, 0.35);
+}
+
+/* ========== Imagem ========== */
+.container-fim {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 30px auto;
+    padding: 0 10px;
+}
+
+#minhafoto {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    background: #fff;
+    padding: 10px 10px 25px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    filter: grayscale(100%);
+    transition: filter 0.5s ease, transform 0.4s ease, box-shadow 0.4s;
+}
+
+#minhafoto:hover {
+    filter: grayscale(0%);
+    transform: scale(1.03) rotate(0.5deg);
+    box-shadow: 0 12px 25px rgba(252, 4, 4, 0.15);
+}
+
+/* ========== Animação ========== */
+@keyframes surgir {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+}
+
+/* ========== Telas pequenas ========== */
+@media (max-width: 480px) {
+    main { width: calc(100% - 1rem); border-radius: 16px; }
+    article { border-left-width: 4px; }
+    ul li { font-size: 0.88rem; padding: 0.3rem 0.7rem; }
+    button { width: 100%; }
+}
+
+/* ========== Telas grandes ========== */
+@media (min-width: 1200px) {
+    main { width: min(100% - 4rem, 1000px); }
+}
+
+/* ========== Animações extras ========== */
+.coracoes {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+.coracoes span {
+    position: absolute;
+    bottom: -40px;
+    opacity: 0;
+    animation: subir linear forwards;
+}
+@keyframes subir {
+    0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.8; }
+    50%  { transform: translateY(-55vh) translateX(25px) rotate(20deg); }
+    100% { transform: translateY(-115vh) translateX(-25px) rotate(-20deg); opacity: 0; }
+}
+main { position: relative; z-index: 1; }
+
+/* Revelar ao rolar */
+.revelar {
+    opacity: 0;
+    transform: translateY(35px) scale(0.98);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.7,.2,1);
+}
+.revelar.visivel { opacity: 1; transform: none; }
+
+/* Coração do título batendo */
+h1::after { display: block; animation: batida 1.3s ease-in-out infinite; }
+@keyframes batida {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.35); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.25); }
+}
+
+/* Título com degradê em movimento */
+h1 {
+    background-size: 200% auto;
+    animation: brilho 5s linear infinite;
+}
+@keyframes brilho { to { background-position: 200% center; } }
+
+/* Borda do cartão pulsando */
+main { animation: surgir 0.7s ease both, pulso 4s ease-in-out infinite 1s; }
+@keyframes pulso {
+    0%, 100% { box-shadow: 0 10px 30px rgba(220, 53, 100, 0.18); }
+    50%      { box-shadow: 0 10px 45px rgba(220, 53, 100, 0.38); }
+}
+
+/* Etiquetas: entrada escalonada e balanço */
+ul li { animation: flutuar 3.5s ease-in-out infinite; }
+ul li:nth-child(odd)  { animation-delay: 0.4s; }
+ul li:nth-child(3n)   { animation-delay: 0.9s; }
+@keyframes flutuar {
+    0%, 100% { translate: 0 0; }
+    50%      { translate: 0 -3px; }
+}
+
+/* Botão com brilho */
+button { position: relative; overflow: hidden; }
+button::after {
+    content: "";
+    position: absolute;
+    top: 0; left: -75%;
+    width: 50%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,.5), transparent);
+    transform: skewX(-20deg);
+    animation: reluzir 3s infinite;
+}
+@keyframes reluzir { to { left: 130%; } }
+
+/* Links e campos */
+input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
+    transform: translateY(-2px);
+}
+
+/* ========== Recursos do JS ========== */
+.contador {
+    text-align: center;
+    background: #fff;
+    border: 1.5px dashed var(--rosa);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    color: var(--fucsia);
+    font-size: 0.95rem;
+}
+.barra-progresso {
+    position: fixed;
+    top: 0; left: 0;
+    height: 5px;
+    width: 0;
+    background: linear-gradient(90deg, var(--rosa), var(--vermelho), var(--fucsia));
+    z-index: 100;
+}
+.btn-topo {
+    position: fixed;
+    right: 1rem; bottom: 1rem;
+    width: 3rem; height: 3rem;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+    transition: opacity 0.3s, transform 0.2s;
+}
+.btn-topo.mostrar { opacity: 1; pointer-events: auto; }
+.retorno {
+    text-align: center;
+    font-weight: 700;
+    color: var(--vermelho);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s, transform 0.5s;
+}
+.retorno.mostrar { opacity: 1; transform: none; }
+
+/* ========== Específicos do estilosdo.html ========== */
+.campo { margin: 0 0 1.4rem; text-align: left; }
+.campo label { color: var(--vermelho-escuro); }
+.campo input[type="radio"] + label { display: inline; font-weight: 400; }
+.campo input[type="radio"]:disabled + label { color: #aaa; cursor: not-allowed; }
+.campo h3 { text-align: left; }
+
+form > ul { margin: 1rem 0 1.5rem; }
+form > div { margin: 0.6rem 0; }
+
+.campo input[type="color"] { width: 4rem; height: 2.6rem; }
+
+/* Link do Instagram como botão */
+article > a {
+    display: inline-block;
+    color: #fff;
+    background: linear-gradient(45deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888);
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+article > a:hover { color: #fff; transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 18px rgba(220, 53, 100, 0.35); }
+
+/* Citações */
+blockquote {
+    background: #fff0f2;
+    border-left: 4px solid var(--vermelho);
+    border-radius: 0 12px 12px 0;
+    padding: 1rem 1.2rem;
+    margin: 1.4rem 0;
+    font-style: italic;
+}
+
+/* Bloco final: foto + declaração */
+.foto-bloco {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem 2rem;
+    margin: 2.5rem 0;
+}
+.polaroid {
+    width: min(100%, 250px);
+    margin: 0;
+    background: #fff;
+    padding: 12px 12px 35px;
+    border-radius: 4px;
+    border: 1px solid #ffe3e3;
+    box-shadow: 0 8px 20px rgba(252, 4, 4, 0.15);
+    transform: rotate(-2deg);
+    transition: transform 0.4s;
+}
+.polaroid:hover { transform: rotate(0) scale(1.04); }
+.polaroid #minhafoto { padding: 0; max-width: none; background: none; box-shadow: none; border-radius: 2px; }
+.polaroid #minhafoto:hover { transform: none; box-shadow: none; }
+.polaroid figcaption {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #fc0404;
+    margin-top: 15px;
+}
+.declaracao {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    font-weight: bold;
+    color: #fc0404;
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    animation: pulsar 2s infinite ease-in-out;
+}
+@keyframes pulsar {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
